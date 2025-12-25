@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1y)jrx@^hxxeam^50=a8!!8@*%q-zj3ujmsocl0z@vua4xf+b9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["dijangooooo.onrender.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -76,10 +76,19 @@ WSGI_APPLICATION = 'Firstproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangoo',
+        'USER':'root',
+        'HOST':'localhost',
+        'PASSWORD':'Ruchi@2105',
+        'PORT':'3306',
+        'OPTIONS':{
+                     "charset":"utf8mb4",
+                     "sql_mode":"STRICT_TRANS_TABLES"
+                  }
     }
 }
 
