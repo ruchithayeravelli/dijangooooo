@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app1.views import view1,view2,view4,dynamicview,personInfo,temp1,studentsBycity,studentsBymarks,productByRating
+from app1.views import view1,view2,view4,dynamicview,personInfo,temp1,studentsBycity,studentsBymarks,productByRating,alljobs,jobByid,jobBylocation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +28,11 @@ urlpatterns = [
     path('show/',temp1),
     path('student/<str:city>',studentsBycity),
     path('studentbymarks/<int:marks>',studentsBymarks),
-    path('prodyrating/<str:rating>',productByRating)
+    path('prodyrating/<str:rating>',productByRating),
+    # ######################################################################
+    # task 24/12/25
+    path('jobs/',alljobs),
+    path('jobid/<int:id>',jobByid),
+    path('jobl/<str:location>',jobBylocation)
+    # ###############################################################
 ]

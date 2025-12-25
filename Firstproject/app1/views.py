@@ -127,8 +127,6 @@ products = [
     }
 ]
 
-from django.http import JsonResponse
-
 def productByRating(request, rating):
     try:
         converted_rating = float(rating)
@@ -152,3 +150,59 @@ def productByRating(request, rating):
 
     except Exception as e:
         return JsonResponse({"status": "failure", "message": str(e)})
+# #######################################################################################################################3
+# 24-12-25555555
+#TASKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+#   View all jobs 
+# • View job by job ID 
+# • View jobs by location
+jobs = [ 
+{"id": 1, "title": "Python Developer", "location": "Hyderabad", "experience": 2}, 
+{"id": 2, "title": "Java Developer", "location": "Bangalore", "experience": 3}, 
+{"id": 3, "title": "Frontend Developer", "location": "Hyderabad", "experience": 1}, 
+{"id": 4, "title": "Data Analyst", "location": "Chennai", "experience": 2} 
+]
+def alljobs(request):
+    return JsonResponse({"jobs":jobs})
+
+def jobByid(request, id):
+    try:
+        if request.method == "GET":
+            for job in jobs:
+                if job["id"] == id:
+                    return JsonResponse(job)
+
+            return JsonResponse({"error": "Not found"}, status=404)
+    except Exception as e:
+        return JsonResponse({"error": "something went wrong"}, status=500)
+
+def jobBylocation(request,location):
+    try:
+        if request.method == "GET":
+            filterData=[]
+            for job in jobs:
+                if job['location'].lower()==location.lower():
+                 filterData.append(job)
+            if filterData:
+                 return JsonResponse({"jobs":filterData})
+            return JsonResponse({"error": "No jobs found for this location" })
+         
+    except Exception as e:
+        return JsonResponse({"error": "smothing went wrong" })
+####################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
